@@ -69,6 +69,7 @@ if (has_credential(CRED_TU_ADD_VOTE)) {
 
 	if (!empty($_POST['addVote']) && empty($error)) {
 		add_tu_proposal($_POST['agenda'], $_POST['user'], $len, $quorum, $uid);
+		notify(array('tu-vote-open', $uid));
 
 		print "<p class=\"pkgoutput\">" . __("New proposal submitted.") . "</p>\n";
 	} else {

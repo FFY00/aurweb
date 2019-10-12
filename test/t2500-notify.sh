@@ -379,6 +379,24 @@ test_expect_success 'Test subject and body of request close notifications with c
 	test_cmp actual expected
 '
 
+test_expect_success 'Test subject and body of request open notifications for merge requests.' '
+	>sendmail.out &&
+	"$NOTIFY" tu-vote-open 1 &&
+	grep ^Subject: sendmail.out >actual &&
+	cat <<-EOD >expected &&
+	Subject: TU Vote Reminder: Proposal 1
+	EOD
+	test_cmp actual expected &&
+	sed -n "/^\$/,\$p" sendmail.out | base64 -d >actual &&
+	echo >>actual &&
+	cat <<-EOD >expected &&
+	A new proposal was added: 1 [1]. The voting period ends in 7 days.
+
+	[1] https://aur.archlinux.org/tu/?id=1
+	EOD
+	test_cmp actual expected
+'
+
 test_expect_success 'Test subject and body of TU vote reminders.' '
 	>sendmail.out &&
 	"$NOTIFY" tu-vote-reminder 1 &&

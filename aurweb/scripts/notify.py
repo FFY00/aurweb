@@ -494,6 +494,29 @@ class RequestCloseNotification(Notification):
         headers.update(headers_cc(self._cc))
         return headers
 
+class TUVoteOpenNotification(Notification):
+    def __init__(self, conn, vote_id):
+        self._vote_id = int(vote_id)
+        cur = conn.execute('SELECT Email, LangPreference FROM Users ' +
+                           'WHERE AccountTypeID IN (2, 4) AND ID NOT IN')
+        self._recipients = cur.fetchall()
+        super().__init__()
+
+    def get_recipients(self):
+        return self._recipients
+
+    def get_subject(self, lang):
+        return self._l10n.translate('TU Vote Open: Proposal {id}',
+                                    lang).format(id=self._vote_id)
+
+    def get_body(self, lang):
+        return self._l10n.translate(
+                'A new proposal was added: {id} [1]. '
+                'The voting period ends in 7 days.',
+                lang).format(id=self._vote_id)
+
+    def get_refs(self):
+        return (aur_location + '/tu/?id=' + str(self._vote_id),)
 
 class TUVoteReminderNotification(Notification):
     def __init__(self, conn, vote_id):
@@ -537,6 +560,7 @@ def main():
         'delete': DeleteNotification,
         'request-open': RequestOpenNotification,
         'request-close': RequestCloseNotification,
+        'tu-vote-open': TUVoteOpenNotification,
         'tu-vote-reminder': TUVoteReminderNotification,
     }
 
