@@ -20,8 +20,11 @@ For all the test to run, the following Arch packages should be installed:
 - python-bleach
 - python-markdown
 - python-pygit2
+- python-pytest
+- python-pytest-tap
 - python-sqlalchemy
 - python-srcinfo
+- python-werkzeug
 
 Writing tests
 -------------
