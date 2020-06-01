@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import re
 import pygit2
 import sys
 import bleach
@@ -47,7 +46,7 @@ class FlysprayLinksInlineProcessor(markdown.inlinepatterns.InlineProcessor):
 
 class FlysprayLinksExtension(markdown.extensions.Extension):
     def extendMarkdown(self, md, md_globals):
-        processor = FlysprayLinksInlineProcessor(r'\bFS#(\d+)\b',md)
+        processor = FlysprayLinksInlineProcessor(r'\bFS#(\d+)\b', md)
         md.inlinePatterns.register(processor, 'flyspray-links', 118)
 
 

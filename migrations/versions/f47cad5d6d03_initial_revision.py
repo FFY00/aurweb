@@ -1,12 +1,10 @@
 """initial revision
 
 Revision ID: f47cad5d6d03
-Revises: 
+Revises:
 Create Date: 2020-02-23 13:23:32.331396
 
 """
-from alembic import op
-import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.

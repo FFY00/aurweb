@@ -24,7 +24,7 @@ def compile_bigint_sqlite(type_, compiler, **kw):
     to INTEGER. Aside from that, BIGINT is the same as INTEGER for SQLite.
 
     See https://docs.sqlalchemy.org/en/13/dialects/sqlite.html#allowing-autoincrement-behavior-sqlalchemy-types-other-than-integer-integer
-    """
+    """  # noqa: E501
     return 'INTEGER'
 
 
