@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 import os
-import pygit2
 import re
 import subprocess
 import sys
 import time
 
+import pygit2
 import srcinfo.parse
 import srcinfo.utils
 

@@ -10,12 +10,11 @@ usage: gendummydata.py outputfilename.sql
 # insert these users/packages into the AUR database.
 #
 import hashlib
-import random
-import time
-import os
-import sys
 import logging
-
+import os
+import random
+import sys
+import time
 
 LOG_LEVEL = logging.DEBUG  # logging level. set to logging.INFO to reduce output
 SEED_FILE = "/usr/share/dict/words"

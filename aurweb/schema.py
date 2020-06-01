@@ -6,7 +6,7 @@ usually be automatically generated. See `migrations/README` for details.
 """
 
 
-from sqlalchemy import CHAR, Column, ForeignKey, Index, MetaData, String, TIMESTAMP, Table, Text, text
+from sqlalchemy import CHAR, TIMESTAMP, Column, ForeignKey, Index, MetaData, String, Table, Text, text
 from sqlalchemy.dialects.mysql import BIGINT, DECIMAL, INTEGER, TINYINT
 from sqlalchemy.ext.compiler import compiles
 

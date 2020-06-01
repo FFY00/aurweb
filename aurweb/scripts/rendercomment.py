@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-import pygit2
 import sys
+
 import bleach
 import markdown
+import pygit2
 
 import aurweb.config
 import aurweb.db
